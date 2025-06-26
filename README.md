@@ -1,13 +1,14 @@
 # Azure_AI_Foundry_Agent
 * Azure AI Foundryのazure-ai-agentsライブラリを用いたAI Agent構築
-* のazure-ai-agentsにおける、シングルエージェントでの複数関数の利用に関する備忘録
+* azure-ai-agentsにおける、シングルエージェントでの複数関数の利用に関する備忘録
 * [GCP-ADKでのAgent開発](https://github.com/yoshi-cow/GCP_ADK_Agent_1)のAzure版
 
 ## GCP-ADKとの違い
 * Azure AI Foundryでは、プロジェクト作成後、利用したい基盤モデルをデプロイ(登録)する必要がある。(GCPでは不要）
 * GCP-ADKでは、『adk web』コマンドで、ローカル開発時にwebUIよりAgentを動かしつつ内部検証できるツールがあるが、Azure AI Foundryでは、そういったAgentの内部の動きを検証できる簡単なツールがない
-* GCP-ADKでは、マルチエージェントまで作成できるが、Azure AI Foundryの場合、マルチエージェントを構築したい場合は、Semantic Kernelの利用が必要
+* GCP-ADKではマルチエージェントまで作成できるが、Azure AI Foundryの場合、マルチエージェントを構築したい時は、Semantic Kernelの利用が必要
 * GCP-ADKでの<b>セッション</b>が、AI Foundryでの<b>スレッド</b>に相当する
+* GCP-ADKでは、デフォルトでカスタムツールのエージェントによる実行が自動的に行われるが、Azure AI Foundryでは、自動でツールを実行してくれないので、`client.enable_auto_function_calls(toolset)`コマンドで、自動化を有効にしないといけない（自動化有効にしない場合は、openai chatcomplition apiのfunction callみたいに、自分でツールの実行コードを入れる必要がでる。）
 
 ## 今回のAgentの内容
 * エージェントの役割：質問文に対応する、コロナ対策支援事業を紹介する
